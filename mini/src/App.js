@@ -24,8 +24,9 @@ function App() {
   const findWord = dictionary.find((entry)=> entry.word.toLowerCase() === words)
   if(findWord){
     setDefinition(findWord.meaning)
+   setInput("")
   }else{
-    setDefinition('Word not found in the dictionary.');
+    setDefinition("Word not found in the dictionary.");
   }
  }
   return (
@@ -33,7 +34,7 @@ function App() {
       <h1>Dictionary App</h1>
       <input value={input} type="text" placeholder="Search for a word..." onChange={(e)=> setInput(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
-      <p>Definition: {definition}</p>      
+      <p>Definition:{definition}</p>      
     </div>
   );
 }
