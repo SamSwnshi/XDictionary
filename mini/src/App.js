@@ -19,12 +19,13 @@ const dictionary =
 function App() {
   const [input,setInput] = useState("");
   const [definition,setDefinition] =useState("")
+
  const handleSearch = ()=>{
   const words = input.toLowerCase()
   const findWord = dictionary.find((entry)=> entry.word.toLowerCase() === words)
   if(findWord){
     setDefinition(findWord.meaning)
-   setInput("")
+    setInput("")
   }else{
     setDefinition("Word not found in the dictionary.");
   }
@@ -34,7 +35,12 @@ function App() {
       <h1>Dictionary App</h1>
       <input value={input} type="text" placeholder="Search for a word..." onChange={(e)=> setInput(e.target.value)} />
       <button onClick={handleSearch}>Search</button>
-      <p>Definition:{definition}</p>      
+      {definition && (
+      <p>
+        Definition:
+        {definition}
+      </p>
+    )}      
     </div>
   );
 }
